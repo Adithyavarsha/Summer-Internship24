@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 18 21:19:52 2024
+
+@author: av439
+"""
+
+import sympy as sp
+
+# Define the symbols
+a, f, k, p = sp.symbols('a f k p')
+g, h, i, j = sp.symbols('g h i j')
+l, m, n, o = sp.symbols('l m n o')
+b, c, d, e = sp.symbols('b c d e')
+z = sp.symbols('z')
+
+# Define the equation
+equation = ((a - z)*(f - z)*(k - z)*(p - z) +
+            (a - z)*g*l*n + (a - z)*h*j*o -
+            (a - z)*h*(k - z)*n - (a - z)*g*i*(p - z) -
+            (a - z)*(f - z)*l*o - b*e*(k - z)*(p - z) -
+            c*e*l*n - d*e*j*o + d*e*(k - z)*n +
+            c*e*j*(p - z) + b*e*l*o + b*g*i*(p - z) +
+            c*h*i*n + d*(f - z)*i*o - d*g*i*n -
+            c*(f - z)*i*(p - z) - b*h*i*o -
+            b*g*l*m - c*h*j*m - d*(f - z)*(k - z)*m +
+            d*g*j*m + c*(f - z)*j*m + b*h*(k - z)*m)
+
+# Expand the equation
+expanded_equation = sp.expand(equation)
+print(expanded_equation)
+print("COLLECTED TERMS")
+
+# Collect the terms involving z
+collected_terms = sp.collect(expanded_equation, z)
+print(collected_terms)
+print("COEFFICIENTS")
+# Extract the coefficient of z
+coefficient_of_z4 = collected_terms.coeff(z**4)
+coefficient_of_z3 = collected_terms.coeff(z**3)
+coefficient_of_z2 = collected_terms.coeff(z**2)
+coefficient_of_z1 = collected_terms.coeff(z)
+coefficient_of_z0 = collected_terms.subs(z,0)
+print("Coefficient of z in the equation:")
+print("4",coefficient_of_z4)
+print(".............................................................................")
+print("3",coefficient_of_z3)
+print(".............................................................................")
+print("2",coefficient_of_z2)
+print(".............................................................................")
+print("1",coefficient_of_z1)
+print(".............................................................................")
+print("0",coefficient_of_z0)
+
+
+print("------------------------------------------------------------------------------------")
+
+import sympy as sp
+
+# Define the symbols
+a, f, k, p = sp.symbols('a f k p')
+g, h, i, j = sp.symbols('g h i j')
+l, m, n, o = sp.symbols('l m n o')
+b, c, d, e = sp.symbols('b c d e')
+z = sp.symbols('z')
+
+# Define the equation
+equation = ((a - z)*(f - z)*(k - z)*(p - z) +
+            (a - z)*g*l*n + (a - z)*h*j*o -
+            (a - z)*h*(k - z)*n - (a - z)*g*i*(p - z) -
+            (a - z)*(f - z)*l*o - b*e*(k - z)*(p - z) -
+            c*e*l*n - d*e*j*o + d*e*(k - z)*n +
+            c*e*j*(p - z) + b*e*l*o + b*g*i*(p - z) +
+            c*h*i*n + d*(f - z)*i*o - d*g*i*n -
+            c*(f - z)*i*(p - z) - b*h*i*o -
+            b*g*l*m - c*h*j*m - d*(f - z)*(k - z)*m +
+            d*g*j*m + c*(f - z)*j*m + b*h*(k - z)*m)
+
+# Expand the equation
+expanded_equation = sp.expand(equation)
+
+# Collect the terms involving z
+collected_terms = sp.collect(expanded_equation, z)
+
+# Extract the terms without z
+constant_terms = collected_terms.subs(z, 0)
+
+print("Terms in the equation without z:")
+print(constant_terms)
+
